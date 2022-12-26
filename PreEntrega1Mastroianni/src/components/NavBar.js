@@ -1,8 +1,6 @@
 import React from 'react'
 
 import CartWidget from './CartWidget'
-
-//Import materialize css
 import 'materialize-css/dist/css/materialize.min.css'
 
 
