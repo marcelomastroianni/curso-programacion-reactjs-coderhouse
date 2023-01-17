@@ -1,0 +1,25 @@
+[{  
+    "id": "1",
+    "name": "Frontend",
+    "description": "Frontend"},
+    {
+    "id": "2",
+    "name": "Backend",
+    "description": "Backend"},
+    {  
+    "id": "3",
+    "name": "Fullstack",
+    "description": "Fullstack"},
+    {
+    "id": "4",
+    "name": "Mobile",
+    "description": "Mobile"},
+    {
+    "id": "5",
+    "name": "DevOps",
+    "description": "DevOps"},
+    {
+    "id": "6",
+    "name": "Data Science",
+    "description": "Data Science"}
+]
