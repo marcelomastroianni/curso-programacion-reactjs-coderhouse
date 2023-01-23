@@ -31,7 +31,7 @@ function App() {
   const navLinks = categories.map((category) => {
     return {
       title: category.name,
-      path: `/category/${category.id}`
+      path: `/category/${category.name.replace(" ","%20")}`
     }
   });
 
@@ -40,13 +40,13 @@ function App() {
 
     <BrowserRouter>
       <header >
-        <NavBar pageTitle="Tienda de cursos" navLinks={navLinks}></NavBar>
+        <NavBar pageTitle="Tienda online" navLinks={navLinks}></NavBar>
       </header>
 
       <main>
         <Routes>
-          <Route path="/" element={<ItemListContainer greeting="Hola, bienvenido a la tienda de cursos"></ItemListContainer>}></Route>
-          <Route path="/category/:categoryId" element={<ItemListContainer greeting="Hola, bienvenido a la tienda de cursos. Categoria:"></ItemListContainer>}></Route>
+          <Route path="/" element={<ItemListContainer greeting="Hola, bienvenido a la tienda online."></ItemListContainer>}></Route>
+          <Route path="/category/:categoryId" element={<ItemListContainer greeting="Hola, bienvenido a la tienda online."></ItemListContainer>}></Route>
 
         </Routes>
       </main>
@@ -54,8 +54,12 @@ function App() {
 
 
 
-      <Footer></Footer>
-      
+    
+      {//<Footer></Footer>
+      }
+
+
+
     </BrowserRouter>
 
   );
