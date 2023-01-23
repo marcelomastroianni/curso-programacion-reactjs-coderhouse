@@ -2,6 +2,7 @@ import React from 'react'
 
 import CartWidget from './CartWidget'
 import 'materialize-css/dist/css/materialize.min.css'
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -14,7 +15,7 @@ export default function NavBar(props) {
       <ul id="nav-mobile" className="right hide-on-med-and-down">
         
         {props.navLinks.map((link, index) => {
-            return <li key={index}><a href={link.path}>{link.title}</a></li>
+            return <li key={index}><NavLink to={link.path}>{link.title}</NavLink></li>
         })}
 
         <li> <CartWidget></CartWidget></li>
