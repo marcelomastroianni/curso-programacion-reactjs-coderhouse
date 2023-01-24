@@ -5,7 +5,7 @@ export default function CartWidget() {
   return (
         <a>
             <i className="material-icons" style={{float:"left"}}>shopping_cart</i>
-            <span class="badge" style={{color:"white"}} >1</span>
+            <span className="badge" style={{color:"white"}} >1</span>
         </a>
   )
 }

@@ -7,8 +7,8 @@ import ItemCard from './ItemCard';
 export default function ItemList(props) {
 
     return (
-        <div class="container">
-            <div class="row">
+        <div className="container">
+            <div className="row">
                 {
                     
                 props.products.map((product) => {
