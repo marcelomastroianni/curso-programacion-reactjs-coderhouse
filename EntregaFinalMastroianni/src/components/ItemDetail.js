@@ -8,7 +8,7 @@ import { useCartContext } from './CartProvider'
 
 export default function ItemDetail(props) {
 
-    const {addItem} = useCartContext()
+    const {addItem, removeItem , getProductIntCart} = useCartContext()
 
     return (
         <div>
@@ -27,7 +27,7 @@ export default function ItemDetail(props) {
 
                       <p>{props.product.description}</p>
                       <h3><b>Precio: </b>{props.product.price}</h3>
-                      <ItemCount stock={props.product.stock} onAdd={(count)=>{ addItem(props.product,count)  }}  > </ItemCount>
+                      <ItemCount stock={props.product.stock} initialValue={getProductIntCart(props.product)?.quantity} onAdd={(count)=>{ addItem(props.product,count)  }} onRemove={()=>{removeItem(props.product)}} > </ItemCount>
 
 
                     </div>

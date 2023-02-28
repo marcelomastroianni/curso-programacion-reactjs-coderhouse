@@ -12,6 +12,7 @@ export default function CartWidget() {
 
   const getTotalItems = () => {
     let total = 0;
+    if(cart.length === 0) return 0;
     cart.forEach((item) => {
       total += item.quantity;
     });

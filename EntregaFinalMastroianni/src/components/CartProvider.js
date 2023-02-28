@@ -19,13 +19,19 @@ export const CartProvider = ({children}) => {
 
             setCart([...copy, {item, quantity}])
 
+        }else{
+
+            const newCart = cart.filter((i) => i.item.id !== item.id)
+
+            setCart([...newCart, {item, quantity}])
+
         }
 
     }
 
-    const removeItem = (itemId) => {
+    const removeItem = (item) => {
 
-        setCart(cart.filter((i) => i.item.id !== itemId))
+        setCart(cart.filter((i) => i.item.id !== item.id))
 
     }
 
@@ -35,15 +41,23 @@ export const CartProvider = ({children}) => {
 
     }
 
-    const isInCart = (itemId) => {
+    const isInCart = (item) => {
 
-        return cart.some((i) => i.item.id === itemId)
+        
+        return cart.some((i) => i.item.id === item.id)
 
     }
 
+    const getProductIntCart = (item) => {
+
+        return cart.find((i) => i.item.id === item.id)
+
+    }
+
+
     return (
 
-        <CartContext.Provider value={{cart, addItem, removeItem, clear, isInCart}}>
+        <CartContext.Provider value={{cart, addItem, removeItem, clear, isInCart, getProductIntCart}}>
 
             {children}
 

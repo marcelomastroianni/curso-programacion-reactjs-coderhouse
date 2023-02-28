@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const ItemCount = ({stock , onAdd }) => {
-    const [count, setCount] = useState(0);
+const ItemCount = ({stock ,initialValue, onAdd , onRemove}) => {
+    const [count, setCount] = useState(initialValue?initialValue:0);
 
 
     const handleAdd = () => {
@@ -18,6 +18,7 @@ const ItemCount = ({stock , onAdd }) => {
 
     const handleReset = () => {
         setCount(0);
+        onRemove();
     }
 
 
