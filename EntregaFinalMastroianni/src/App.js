@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { CartProvider } from './components/CartProvider';
 
 function App() {
 
@@ -41,28 +42,26 @@ function App() {
   return (
 
     <BrowserRouter>
-      <header >
-        <NavBar pageTitle="Tienda online" navLinks={navLinks}></NavBar>
-      </header>
-
-      <main>
-        <Routes>
-          <Route path="/" element={<ItemListContainer greeting="Hola, bienvenido a la tienda online."></ItemListContainer>}></Route>
-          <Route path="/category/:categoryId" element={<ItemListContainer greeting="Hola, bienvenido a la tienda online."></ItemListContainer>}></Route>
-          <Route path="/item/:id" element={<ItemDetailContainer></ItemDetailContainer>}></Route>
-
-        </Routes>
-      </main>
-
-
-
+      <CartProvider>
 
     
-      {//<Footer></Footer>
-      }
+        <header >
+          <NavBar pageTitle="Tienda online" navLinks={navLinks}></NavBar>
+        </header>
 
+        <main>
+          <Routes>
+            <Route path="/" element={<ItemListContainer greeting="Hola, bienvenido a la tienda online."></ItemListContainer>}></Route>
+            <Route path="/category/:categoryId" element={<ItemListContainer greeting="Hola, bienvenido a la tienda online."></ItemListContainer>}></Route>
+            <Route path="/item/:id" element={<ItemDetailContainer></ItemDetailContainer>}></Route>
 
+          </Routes>
+        </main>
 
+        {//<Footer></Footer>
+        }
+      
+      </CartProvider>
     </BrowserRouter>
 
   );
