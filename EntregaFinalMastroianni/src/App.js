@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react';
 import { CartProvider } from './components/CartProvider';
 
 import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 
 function App() {
 
@@ -57,6 +58,8 @@ function App() {
             <Route path="/category/:categoryId" element={<ItemListContainer greeting="Hola, bienvenido a la tienda online."></ItemListContainer>}></Route>
             <Route path="/item/:id" element={<ItemDetailContainer></ItemDetailContainer>}></Route>
             <Route path="/cart" element={<Cart></Cart>}></Route>
+            <Route path="/checkout" element={<Checkout></Checkout>}></Route>
+            
           </Routes>
         </main>
 

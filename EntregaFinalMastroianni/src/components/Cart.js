@@ -5,6 +5,8 @@ import React from 'react';
 import { useCartContext } from './CartProvider'
 import ItemCount from './ItemCount';
 
+import { NavLink } from 'react-router-dom'
+
 
 const Cart = () => { 
 
@@ -42,6 +44,14 @@ const Cart = () => {
             return total;
     
         }
+
+    const handleFinalizarCompra = () => {
+
+        //alert("Compra finalizada con éxito. Gracias por su compra.")
+
+        //clear();
+
+    }
 
     return (
 
@@ -119,11 +129,13 @@ const Cart = () => {
 
                             </button>
 
-                            <button className="btn waves-effect waves-light" type="button" name="action">Finalizar compra
+                            <NavLink to="/checkout">
+                            <button className="btn waves-effect waves-light" type="button" onClick={ handleFinalizarCompra } name="action">Finalizar compra
 
                                 <i className="material-icons right">send</i>
                                 
                             </button>
+                            </NavLink>
 
                             <h3>Total: {getTotalPrice()}</h3>
 
