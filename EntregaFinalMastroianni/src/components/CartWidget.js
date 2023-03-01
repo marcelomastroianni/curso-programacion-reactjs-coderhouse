@@ -3,6 +3,9 @@ import 'materialize-css/dist/css/materialize.min.css'
 
 import { useCartContext } from './CartProvider'
 
+
+import { NavLink } from 'react-router-dom'
+
 export default function CartWidget() {
 
 
@@ -21,9 +24,9 @@ export default function CartWidget() {
 
 
   return (
-        <a>
+        <NavLink to="/cart">
             <i className="material-icons" style={{float:"left"}}>shopping_cart</i>
             <span className="badge" style={{color:"white"}} >{getTotalItems()}</span>
-        </a>
+        </NavLink>
   )
 }

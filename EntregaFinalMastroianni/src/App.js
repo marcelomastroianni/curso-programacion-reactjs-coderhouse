@@ -12,6 +12,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { CartProvider } from './components/CartProvider';
 
+import Cart from './components/Cart';
+
 function App() {
 
   const [categories, setCategories] = useState([]);
@@ -54,7 +56,7 @@ function App() {
             <Route path="/" element={<ItemListContainer greeting="Hola, bienvenido a la tienda online."></ItemListContainer>}></Route>
             <Route path="/category/:categoryId" element={<ItemListContainer greeting="Hola, bienvenido a la tienda online."></ItemListContainer>}></Route>
             <Route path="/item/:id" element={<ItemDetailContainer></ItemDetailContainer>}></Route>
-
+            <Route path="/cart" element={<Cart></Cart>}></Route>
           </Routes>
         </main>
 
