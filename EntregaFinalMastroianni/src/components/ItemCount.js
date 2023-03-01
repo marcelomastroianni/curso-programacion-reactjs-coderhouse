@@ -32,7 +32,7 @@ const ItemCount = ({stock ,initial_count, onAdd , onRemove}) => {
     return (
         <div className="itemCount">
             
-            <button style={{float:"left", margin:"5px"}} onClick={handleReset}>Resetear</button>    
+            <button style={{float:"left", margin:"5px"}} onClick={handleReset}>Sacar del carrito</button>    
             <button style={{float:"left", margin:"5px"}} onClick={handleSubstract}>-</button>
             <p style={{float:"left", margin:"5px"}}>{count}</p>
             <button style={{float:"left", margin:"5px"}} onClick={handleAdd}>+</button>

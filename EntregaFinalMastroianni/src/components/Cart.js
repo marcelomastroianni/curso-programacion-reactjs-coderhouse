@@ -3,14 +3,13 @@
 import React from 'react';
 
 import { useCartContext } from './CartProvider'
-
-
+import ItemCount from './ItemCount';
 
 
 const Cart = () => { 
 
 
-    const {cart, removeItem, clear} = useCartContext()
+    const {cart, removeItem, clear, addItem } = useCartContext()
 
     const getTotalItems = () => {
 
@@ -46,7 +45,7 @@ const Cart = () => {
 
     return (
 
-        <div className="container">
+        <div className="container" style={{width:"80%"}}>
 
             <h1>Carrito de compras</h1>
 
@@ -96,11 +95,9 @@ const Cart = () => {
 
                                             <td>
 
-                                                <button className="btn waves-effect waves-light" type="button" name="action" onClick={() => removeItem(item.item)}>Eliminar
+                                                <ItemCount stock={item.item.stock} initial_count={item.quantity} onAdd={(count) => addItem(item.item, count)} onRemove={() => removeItem(item.item)}/>
+                                                
 
-                                                    <i className="material-icons right">delete</i>
-
-                                                </button>
 
                                             </td>
 
