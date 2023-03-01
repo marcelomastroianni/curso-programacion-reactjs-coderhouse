@@ -1,14 +1,21 @@
 
-import React from 'react'
+import React, { useState } from 'react';
+
 import ItemCount from './ItemCount'
 
 import { useCartContext } from './CartProvider'
 
 
 
+
 export default function ItemDetail(props) {
 
     const {addItem, removeItem , getProductIntCart} = useCartContext()
+
+    //const [count, setCount] = useState(0);
+
+ 
+
 
     return (
         <div>
@@ -27,7 +34,11 @@ export default function ItemDetail(props) {
 
                       <p>{props.product.description}</p>
                       <h3><b>Precio: </b>{props.product.price}</h3>
-                      <ItemCount stock={props.product.stock} initialValue={getProductIntCart(props.product)?.quantity} onAdd={(count)=>{ addItem(props.product,count)  }} onRemove={()=>{removeItem(props.product)}} > </ItemCount>
+                      <ItemCount  stock={props.product.stock} 
+                                  initial_count={getProductIntCart(props.product)?.quantity || 0} 
+                                  onAdd={(count)=>{ addItem(props.product,count)  }} 
+                                  onRemove={()=>{removeItem(props.product)}} > 
+                      </ItemCount>
 
 
                     </div>

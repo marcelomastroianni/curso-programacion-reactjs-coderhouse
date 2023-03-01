@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 
-const ItemCount = ({stock ,initialValue, onAdd , onRemove}) => {
-    const [count, setCount] = useState(initialValue?initialValue:0);
+const ItemCount = ({stock ,initial_count, onAdd , onRemove}) => {
+
+
+    const [count, setCount] = useState(0);
+
+    React.useEffect(() => {
+        setCount(initial_count)
+    }, [initial_count])
+
 
 
     const handleAdd = () => {
