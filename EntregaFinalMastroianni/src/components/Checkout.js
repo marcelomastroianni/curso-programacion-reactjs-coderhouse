@@ -2,17 +2,11 @@
 
 import React, { useState, useContext } from 'react';
 import { useCartContext } from './CartProvider'
-
-//import { UserContext } from '../context/UserContext';
-//import { useHistory } from 'react-router-dom';
-
-/*
-import { getFirestore } from '../firebase';
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { getFirestore, collection, addDoc, getDocs, query, where, getDoc, doc } from "firebase/firestore";
+import { db } from "../firebase"
 import { collection, addDoc, getDocs, query, where, getDoc, doc } from "firebase/firestore";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-*/
+
+
+//import { useHistory } from 'react-router-dom';
 
 
 
@@ -51,11 +45,8 @@ const Checkout = () => {
 
     //const history = useHistory();
 
-    //const auth = getAuth();
 
-    //const db = getFirestore();
 
-    //const storage = getStorage();
 
     const handleBuy = async (e) => {
 
@@ -147,11 +138,11 @@ const Checkout = () => {
 
         }
 
-        //const orders = collection(db, "orders");
+        const orders = collection(db, "orders");
 
-        //const docRef = await addDoc(orders, newOrder);
+        const docRef = await addDoc(orders, newOrder);
 
-        //setOrderId(docRef.id);
+        setOrderId(docRef.id);
 
         setOrder(newOrder);
 
