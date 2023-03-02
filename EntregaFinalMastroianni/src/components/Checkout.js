@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useCartContext } from './CartProvider'
 import { db } from "../firebase"
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc , serverTimestamp} from "firebase/firestore";
 import { toast } from "react-toastify"
 import { NavLink } from 'react-router-dom'
 
@@ -136,7 +136,7 @@ const Checkout = () => {
 
             items: cart,
 
-            date: new Date(),
+            date:  serverTimestamp(),
 
             total: getTotalPrice()
 

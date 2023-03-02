@@ -17,7 +17,7 @@ const Order = (props) => {
             <p>Email: {order?.buyer?.email}</p>
             <p>Teléfono: {order?.buyer?.phone}</p>
             <p>Dirección: {order?.buyer?.address}</p>
-            <p>Fecha de compra: {"fecha"/*order?.date*/}</p>
+            <p>Fecha de compra: {new Date(order?.date.seconds * 1000).toLocaleDateString("es-AR")} </p>
             <p>Productos comprados: </p>
             <ul>
                 {
