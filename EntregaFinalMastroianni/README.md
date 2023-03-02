@@ -1,3 +1,39 @@
+
+# Funcionalidad
+
+
+## Pantalla de inicio:
+
+![plot](./pantallas/inicio.png)
+
+## Categoria Electronicos
+
+![plot](./pantallas/categoria_electronicos.png)
+
+## Detalle de un producto
+
+![plot](./pantallas/detalle%20de%20un%20producto.png)
+
+## Agrego productos al carrito
+
+![plot](./pantallas/agrego_productos_al_carrito.png)
+
+## Vista del carrito
+
+![plot](./pantallas/vista_del_carrito.png)
+
+## Formulario del checkout
+
+![plot](./pantallas/formulario_checkout_1.png)
+
+![plot](./pantallas/formulario_checkout_2.png)
+
+## Comprobante compra realizada
+
+![plot](./pantallas/comprobante_compra_realizada.png)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
