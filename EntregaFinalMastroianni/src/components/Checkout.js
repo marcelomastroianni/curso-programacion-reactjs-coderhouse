@@ -1,10 +1,11 @@
 
 
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useCartContext } from './CartProvider'
 import { db } from "../firebase"
 import { collection, addDoc, getDocs, query, where, getDoc, doc } from "firebase/firestore";
-
+import { toast } from "react-toastify"
+import { NavLink } from 'react-router-dom'
 
 //import { useHistory } from 'react-router-dom';
 
@@ -13,7 +14,7 @@ import { collection, addDoc, getDocs, query, where, getDoc, doc } from "firebase
 const Checkout = () => {
 
 
-    const {cart, removeItem, clear, addItem } = useCartContext()
+    const {cart, clear } = useCartContext()
 
     const [name, setName] = useState('');
 
@@ -33,15 +34,11 @@ const Checkout = () => {
 
     const [country, setCountry] = useState('');
 
-    const [error, setError] = useState('');
-
     const [loading, setLoading] = useState(false);
 
     const [orderId, setOrderId] = useState('');
 
     const [order, setOrder] = useState({});
-
-    //const {user} = useContext(UserContext);
 
     //const history = useHistory();
 
@@ -56,7 +53,8 @@ const Checkout = () => {
 
         if (name === '' || lastName === '' || email === '' || phone === '' || address === '' || city === '' || state === '' || zipCode === '' || country === '') {
 
-            setError('Todos los campos son obligatorios');
+            toast.dismiss()
+            toast.error("Todos los campos son obligatorios")
 
             setLoading(false);
 
@@ -66,7 +64,8 @@ const Checkout = () => {
 
         if (name.length < 3 || lastName.length < 3) {
 
-            setError('El nombre y apellido deben tener al menos 3 caracteres');
+            toast.dismiss()
+            toast.error("El nombre y apellido deben tener al menos 3 caracteres")
 
             setLoading(false);
 
@@ -76,7 +75,9 @@ const Checkout = () => {
 
         if (phone.length < 10) {
 
-            setError('El teléfono debe tener al menos 10 caracteres');
+            toast.dismiss()
+            toast.error("El teléfono debe tener al menos 10 caracteres")
+    
 
             setLoading(false);
 
@@ -86,7 +87,9 @@ const Checkout = () => {
 
         if (zipCode.length < 4) {
 
-            setError('El código postal debe tener al menos 4 caracteres');
+            toast.dismiss()
+            toast.error("El código postal debe tener al menos 4 caracteres")
+        
 
             setLoading(false);
 
@@ -96,7 +99,9 @@ const Checkout = () => {
 
         if (country.length < 3) {
 
-            setError('El país debe tener al menos 3 caracteres');
+
+            toast.dismiss()
+            toast.error("El país debe tener al menos 3 caracteres")
 
             setLoading(false);
 
@@ -138,6 +143,10 @@ const Checkout = () => {
 
         }
 
+        toast.dismiss()
+        toast.info("Procesando compra...")
+
+
         const orders = collection(db, "orders");
 
         const docRef = await addDoc(orders, newOrder);
@@ -146,10 +155,12 @@ const Checkout = () => {
 
         setOrder(newOrder);
 
-        clear();
+        clear(); //Se vacía el carrito
 
         setLoading(false);
-
+        
+        toast.dismiss()
+        toast.success("Compra finalizada con éxito. Gracias por su compra.")
        ///history.push('/order/' + docRef.id);
 
 
@@ -169,17 +180,7 @@ const Checkout = () => {
 
     }
 
-    const handleRemove = (id) => {
-        
-        removeItem(id);
 
-    }
-
-    const handleAdd = (id) => {
-
-        addItem(id);
-
-    }
 
     return (
 
@@ -227,8 +228,6 @@ const Checkout = () => {
 
                                 <th scope="col">Subtotal</th>
 
-                                <th scope="col">Acciones</th>
-
                             </tr>
 
                         </thead>
@@ -247,14 +246,6 @@ const Checkout = () => {
 
                                     <td>${item.item.price * item.quantity}</td>
 
-                                    <td>
-
-                                        <button className="btn btn-danger" onClick={() => handleRemove(item.id)}>Eliminar</button>
-                                        
-                                        <button className="btn btn-success" onClick={() => handleAdd(item.id)}>Agregar</button>
-
-                                    </td>
-
                                 </tr>
 
                             ))}
@@ -262,6 +253,16 @@ const Checkout = () => {
                         </tbody>
 
                     </table>
+
+
+                    <NavLink to="/cart">
+                    <button className="btn waves-effect waves-light" style={{marginTop:"15px"}} type="button"  name="action">Modificar carrito
+
+                        <i className="material-icons right">shopping_cart</i>
+                        
+                    </button>
+                    </NavLink>
+
 
                 </div>
 
@@ -439,6 +440,8 @@ const Checkout = () => {
                         <div className="row">
 
                             <div className="col-12">
+
+
 
                                 <button type="submit" className="btn btn-primary">Comprar</button>
 
