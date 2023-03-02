@@ -33,11 +33,7 @@ const Checkout = () => {
 
     const [country, setCountry] = useState('');
 
-    const [loading, setLoading] = useState(false);
 
-    const [orderId, setOrderId] = useState('');
-
-    const [order, setOrder] = useState({});
 
     let navigate = useNavigate();
 
@@ -48,14 +44,13 @@ const Checkout = () => {
 
         e.preventDefault();
 
-        setLoading(true);
+      
 
         if (name === '' || lastName === '' || email === '' || phone === '' || address === '' || city === '' || state === '' || zipCode === '' || country === '') {
 
             toast.dismiss()
             toast.error("Todos los campos son obligatorios")
 
-            setLoading(false);
 
             return;
 
@@ -66,7 +61,6 @@ const Checkout = () => {
             toast.dismiss()
             toast.error("El nombre y apellido deben tener al menos 3 caracteres")
 
-            setLoading(false);
 
             return;
 
@@ -77,9 +71,6 @@ const Checkout = () => {
             toast.dismiss()
             toast.error("El teléfono debe tener al menos 10 caracteres")
     
-
-            setLoading(false);
-
             return;
 
         }
@@ -89,9 +80,6 @@ const Checkout = () => {
             toast.dismiss()
             toast.error("El código postal debe tener al menos 4 caracteres")
         
-
-            setLoading(false);
-
             return;
 
         }
@@ -101,8 +89,6 @@ const Checkout = () => {
 
             toast.dismiss()
             toast.error("El país debe tener al menos 3 caracteres")
-
-            setLoading(false);
 
             return;
 
@@ -150,13 +136,8 @@ const Checkout = () => {
 
         const docRef = await addDoc(orders, newOrder);
 
-        setOrderId(docRef.id);
-
-        setOrder(newOrder);
 
         clear(); //Se vacía el carrito
-
-        setLoading(false);
         
         toast.dismiss()
         toast.success("Compra finalizada con éxito. Gracias por su compra.")
