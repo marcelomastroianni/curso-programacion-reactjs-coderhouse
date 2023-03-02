@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useCartContext } from './CartProvider'
 import { db } from "../firebase"
-import { collection, addDoc, getDocs, query, where, getDoc, doc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { toast } from "react-toastify"
 import { NavLink } from 'react-router-dom'
 
