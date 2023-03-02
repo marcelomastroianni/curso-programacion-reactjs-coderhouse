@@ -14,7 +14,7 @@ import { CartProvider } from './components/CartProvider';
 
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
-import Order from './components/Order';
+import OrderContainer from './components/OrderContainer';
 
 import "react-toastify/dist/ReactToastify.css"
 import { ToastContainer } from "react-toastify"
@@ -63,7 +63,7 @@ function App() {
             <Route path="/item/:id" element={<ItemDetailContainer></ItemDetailContainer>}></Route>
             <Route path="/cart" element={<Cart></Cart>}></Route>
             <Route path="/checkout" element={<Checkout></Checkout>}></Route>
-            <Route path="/order/:orderId" element={<Order></Order>}></Route>
+            <Route path="/order/:orderId" element={<OrderContainer></OrderContainer>}></Route>
           </Routes>
           <ToastContainer />
         </main>

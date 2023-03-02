@@ -1,21 +1,34 @@
-
-
 import React, { Component } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
+const Order = (props) => {
 
+    const {order} = props
 
-const Order = () => {
-
-    const {orderId} = useParams();
-
+    if (!order) {
+        return <h3>Cargando...</h3>
+    }
+    
     return (
-        <div className="container" style={{width:"80%"}}>
-            <h1>Compra finalizada con éxito. Gracias por su compra.</h1>
-            <h3>El número de su orden es: {orderId}</h3>
+        <div>
+            <h3>Detalles de la orden</h3>
+            <p>Nombre: {order?.buyer?.name}</p>
+            <p>Apellido: {order?.buyer?.lastName}</p>
+            <p>Email: {order?.buyer?.email}</p>
+            <p>Teléfono: {order?.buyer?.phone}</p>
+            <p>Dirección: {order?.buyer?.address}</p>
+            <p>Fecha de compra: {"fecha"/*order?.date*/}</p>
+            <p>Productos comprados: </p>
+            <ul>
+                {
+                    order?.items?.map((item) => {
+                        return <li key={item.item.id} >{item.item.title} x {item.quantity}</li>
+                    })
+                }
+            </ul>
         </div>
     )
-}
 
+}
 
 export default Order;
