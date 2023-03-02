@@ -1,14 +1,13 @@
 
 
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useCartContext } from './CartProvider'
 import { db } from "../firebase"
 import { collection, addDoc, getDocs, query, where, getDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify"
 import { NavLink } from 'react-router-dom'
 
-//import { useHistory } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 
 const Checkout = () => {
@@ -40,7 +39,7 @@ const Checkout = () => {
 
     const [order, setOrder] = useState({});
 
-    //const history = useHistory();
+    let navigate = useNavigate();
 
 
 
@@ -161,7 +160,8 @@ const Checkout = () => {
         
         toast.dismiss()
         toast.success("Compra finalizada con éxito. Gracias por su compra.")
-       ///history.push('/order/' + docRef.id);
+       
+        navigate('/order/' + docRef.id);
 
 
     }
